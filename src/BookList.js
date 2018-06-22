@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 class BookList extends Component {
 
     render(){
-      const {books, currentlyReading, wantToRead, read, onMoveBook } = this.props
+      const {currentlyReading, wantToRead, read, onMoveBook } = this.props
       return(
         <div className="list-books">
         <div className="list-books-title">

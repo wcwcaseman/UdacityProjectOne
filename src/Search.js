@@ -39,7 +39,7 @@ searchFor = (userInput) => {
     render(){ 
       
 const {searchResults} = this.state
-const {onMoveBook, books} = this.props
+const {onMoveBook} = this.props
       return (
 
 
