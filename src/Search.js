@@ -14,6 +14,8 @@ searchFor = (userInput) => {
     BooksAPI.search(userInput)
     .then((books) => {
 
+      if(books.error !== "empty query"){
+
       books.forEach((item) => { item.shelf = 'none' } )
 
       let mainPageBooks =  this.props.books
@@ -27,7 +29,9 @@ searchFor = (userInput) => {
 
         }
       }
-
+    }else{
+      books = [];
+    }
 
 
       this.setState({
