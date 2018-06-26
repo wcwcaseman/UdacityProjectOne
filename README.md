@@ -1,4 +1,4 @@
-# MyReads Project
+# Udacity Project One aka MyReads Project
 
 ## Project Details
 The MyRead application organizes books into three categories. You can categories your book into the categories Currently Reading, Want to Read, Read or remove from the three categories by selecting none from the dropdown menu on each book displayed. To find more books you can navigate to the search page and enter a query. The application will reach out to an Udacity API to return a list of books. 
