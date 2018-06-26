@@ -1,14 +1,17 @@
 # MyReads Project
 
-This is the starter template for the final assessment project for Udacity's React Fundamentals course. The goal of this template is to save you time by providing a static example of the CSS and HTML markup that may be used, but without any of the React code that is needed to complete the project. If you choose to start with this template, your job will be to add interactivity to the app by refactoring the static code in this template.
+## Project Details
+The MyRead application organizes books into three categories. You can categories your book into the categories Currently Reading, Want to Read, Read or remove from the three categories by selecting none from the dropdown menu on each book displayed. To find more books you can navigate to the search page and enter a query. The application will reach out to an Udacity API to return a list of books. 
 
-Of course, you are free to start this project from scratch if you wish! Just be sure to use [Create React App](https://github.com/facebookincubator/create-react-app) to bootstrap the project.
 
-## TL;DR
+## How to setup the project
 
-To get started developing right away:
-
+* the Project can be cloned from https://github.com/wcwcaseman/UdacityProjectOne.git
+* You can clone this project by opening the [GitHub desktop application](https://desktop.github.com/).
+Go to File->Clone Repository, then navigate to the 
+URL tab and past in the above URL
 * install all project dependencies with `npm install`
+* install react-debounce-input from https://www.npmjs.com/package/react-debounce-input with `npm install --save react react-debounce-input`
 * start the development server with `npm start`
 
 ## What You're Getting
@@ -24,6 +27,10 @@ To get started developing right away:
     ├── App.css # Styles for your app. Feel free to customize this as you desire.
     ├── App.js # This is the root of your app. Contains static HTML right now.
     ├── App.test.js # Used for testing. Provided with Create React App. Testing is encouraged, but not required.
+    ├── Books.js # Component for displaying a book
+    ├── BookList.js # Component for the main page display the booklist categories
+    ├── BookShelf.js # Component for displaying a list of Books
+    ├── BookShelfChanger.js # Component select list for moving Books to different categories
     ├── BooksAPI.js # A JavaScript API for the provided Udacity backend. Instructions for the methods are below.
     ├── icons # Helpful images for your app. Use at your discretion.
     │   ├── add.svg
@@ -31,17 +38,10 @@ To get started developing right away:
     │   └── arrow-drop-down.svg
     ├── index.css # Global styles. You probably won't need to change anything here.
     └── index.js # You should not need to modify this file. It is used for DOM rendering only.
+    ├── NoMatchPage.js # 404 Page displayed when a user navigates to a page that doesn't exist
+    ├── Search.js # Component for finding books in the Udacity API
 ```
 
-Remember that good React design practice is to create new JS files for each component and use import/require statements to include them where they are needed.
-
-## Backend Server
-
-To simplify your development process, we've provided a backend server for you to develop against. The provided file [`BooksAPI.js`](src/BooksAPI.js) contains the methods you will need to perform necessary operations on the backend:
-
-* [`getAll`](#getall)
-* [`update`](#update)
-* [`search`](#search)
 
 ### `getAll`
 
@@ -85,8 +85,3 @@ The backend API uses a fixed set of cached search results and is limited to a pa
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app). You can find more information on how to perform common tasks [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
 
-## Contributing
-
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
-
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).

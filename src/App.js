@@ -1,8 +1,9 @@
 import React from 'react'
 import * as BooksAPI from './BooksAPI'
-import { Route } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 import Search from './Search'
 import BookList from './BookList'
+import NoMatchPage from './NoMatchPage'
 import './App.css'
 
 
@@ -10,9 +11,6 @@ class BooksApp extends React.Component {
   state = {
     books: [],
     searchResults: [],
-    currentlyReading: [],
-    wantToRead: [],
-    read: []
   }
 
   componentDidMount() {
@@ -23,10 +21,7 @@ getAllBooks() {
   BooksAPI.getAll()
   .then((books) => {
     this.setState(() => ({
-       books : books,
-       currentlyReading : books.filter((book) => book.shelf === "currentlyReading"),
-       wantToRead : books.filter((book) => book.shelf === "wantToRead"),
-       read : books.filter((book) => book.shelf === "read")
+       books : books
     }))
   })
 }  
@@ -40,10 +35,7 @@ moveBook = (book, shelf) => {
     let newBooks = this.state.books.filter(currentBook => currentBook.id !== book.id);
     newBooks.push(book);
     this.setState(() => ({
-      books : newBooks,
-      currentlyReading : newBooks.filter((book) => book.shelf === "currentlyReading"),
-      wantToRead : newBooks.filter((book) => book.shelf === "wantToRead"),
-      read : newBooks.filter((book) => book.shelf === "read")
+      books : newBooks
    }))
 
   }    
@@ -53,19 +45,21 @@ moveBook = (book, shelf) => {
 
   render() {
     return (
+
       <div className="app">
-        <Route exact path='/search' render={() => (<Search
-        books={this.state.books}     
-        onMoveBook={this.moveBook} />)} >
-        </Route>
-        <Route exact path='/' render={() => (<BookList 
-          currentlyReading={this.state.currentlyReading}
-          wantToRead={this.state.wantToRead}   
-          read={this.state.read}      
-          books={this.state.books} 
-          onMoveBook={this.moveBook}/>)} >
-        </Route>
+        <Switch>
+          <Route exact path='/search' render={() => (<Search
+          books={this.state.books}     
+          onMoveBook={this.moveBook} />)} >
+          </Route>
+          <Route exact path='/' render={() => (<BookList   
+            books={this.state.books} 
+            onMoveBook={this.moveBook}/>)} >
+          </Route>
+          <Route component={NoMatchPage}/>
+        </Switch>
       </div>
+
     )
   }
 }
